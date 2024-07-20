@@ -4,7 +4,8 @@
   "description": "deploy traccar-web on cloudflare",
   "main": "index.js",
   "scripts": {
-    "build": "./build.sh",
+    "prebuild": "git clone --depth 1 https://github.com/traccar/traccar-web",
+    "build": "cd traccar-web && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
