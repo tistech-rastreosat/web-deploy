@@ -1,0 +1,19 @@
+{
+  "name": "traccar-cloudflare",
+  "version": "1.0.0",
+  "description": "deploy traccar-web on cloudflare",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcardus/traccar-cloudflare.git"
+  },
+  "author": "jcardus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcardus/traccar-cloudflare/issues"
+  },
+  "homepage": "https://github.com/jcardus/traccar-cloudflare#readme"
+}
