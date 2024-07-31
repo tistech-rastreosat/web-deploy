@@ -1,6 +1,7 @@
 import defaultIcon from './default'
 import {loadImage, prepareIcon} from "../mapUtil.js";
 import {map} from "../MapView.jsx";
+import {mapIcons, mapImages} from "../preloadImages";
 
 const icons = {
     default: defaultIcon
@@ -23,12 +24,20 @@ export default async (e, mapPalette) => {
     }
     const [category, color, rotation] = e.id.split('-')
 
-    const iconPath = icons[category](rotation, color, mapPalette);
-    const svg = getSVG(iconPath)
-    const svgBlob = new Blob([svg], {type: 'image/svg+xml;charset=utf-8'});
-    const image = await loadImage(URL.createObjectURL(svgBlob))
+    let image
+    if (icons[category]) {
+        const iconPath = icons[category](rotation, color, mapPalette);
+        const svg = getSVG(iconPath)
+        const svgBlob = new Blob([svg], {type: 'image/svg+xml;charset=utf-8'});
+        image = await loadImage(URL.createObjectURL(svgBlob)).then(icon =>
+            prepareIcon(icon))
+    } else {
+        image = await loadImage(mapIcons[category]).then(icon =>
+            prepareIcon(mapImages.background , icon, mapPalette[color].main))
+    }
+
     if (!map.hasImage(e.id)) {
-        map.addImage(e.id, prepareIcon(image), {
+        map.addImage(e.id, image, {
             pixelRatio: window.devicePixelRatio,
         })
     }
