@@ -2,8 +2,10 @@ import defaultIcon from './default'
 import {loadImage, prepareIcon} from "../mapUtil.js";
 import {map} from "../MapView.jsx";
 import {mapIcons, mapImages} from "../preloadImages";
+import backgroundSvg from "../../../resources/images/background.svg";
 
-const icons = {
+
+export const icons = {
     default: defaultIcon
 }
 
@@ -14,6 +16,8 @@ function getSVG(iconPath) {
         </svg>
     `
 }
+
+const background = await loadImage(backgroundSvg)
 
 export default async (e, mapPalette) => {
     if (!/^[a-z]+-[a-z]+-[0-9.]+$/.test(e.id)) {
@@ -33,7 +37,7 @@ export default async (e, mapPalette) => {
             prepareIcon(icon))
     } else {
         image = await loadImage(mapIcons[category]).then(icon =>
-            prepareIcon(mapImages.background , icon, mapPalette[color].main))
+            prepareIcon(background, icon, mapPalette[color].main))
     }
 
     if (!map.hasImage(e.id)) {
