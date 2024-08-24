@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "./prebuild.sh",
-    "build": "cd traccar-web && npm install && npm run build",
+    "build": "cd traccar-web && npm install && npm run generate-pwa-assets && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
