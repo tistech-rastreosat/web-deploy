@@ -1,3 +1,4 @@
+#!/bin/bash
 git clone --depth 1 https://github.com/traccar/traccar-web || true
 cp -vr src public index.html traccar-web
 
