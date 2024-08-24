@@ -1,6 +1,9 @@
 git clone --depth 1 https://github.com/traccar/traccar-web || true
 cp -vr src public index.html traccar-web
-sed -i "s/\${title}/$TITLE/g" traccar-web/vite.config.js
-sed -i "s/\${description}/$DESCRIPTION/g" traccar-web/vite.config.js
-sed -i "s/\${colorPrimary}/$COLOR_PRIMARY/g" traccar-web/vite.config.js
-cat traccar-web/vite.config.js
+
+FILES=("traccar-web/vite.config.js" "traccar-web/index.html")
+for FILE in "${FILES[@]}"; do
+    sed -i "s|\${title}|$TITLE|g" "$FILE"
+    sed -i "s|\${description}|$DESCRIPTION|g" "$FILE"
+    sed -i "s|\${colorPrimary}|$COLOR_PRIMARY|g" "$FILE"
+done
