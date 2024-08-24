@@ -4,7 +4,7 @@ cp -vr src public index.html traccar-web
 
 FILES=("traccar-web/vite.config.js" "traccar-web/index.html")
 for FILE in "${FILES[@]}"; do
-    sed -i "s|\${title}|$TITLE|g" "$FILE"
-    sed -i "s|\${description}|$DESCRIPTION|g" "$FILE"
-    sed -i "s|\${colorPrimary}|$COLOR_PRIMARY|g" "$FILE"
+    sed -i "s|\${title}|$TITLE|g" "$FILE" || true
+    sed -i "s|\${description}|$DESCRIPTION|g" "$FILE" || true
+    sed -i "s|\${colorPrimary}|$COLOR_PRIMARY|g" "$FILE" || true
 done
